@@ -1,33 +1,34 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
+import TodoInput from './components/TodoInput'
+import style from '../src/css/App.module.css'
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ListItems from './components/ListItems';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const[todoList, setTodoList] = useState([]);
+  
+  const addItemToList = (todoItem)=>{
+    if(todoItem!=='')
+    setTodoList([...todoList, todoItem]);
+  }
+
+  const deleteTodo = (key)=>{
+    let newTodoList = [...todoList];
+    newTodoList.splice(key,1);
+    setTodoList([...newTodoList])
+  }
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <TodoInput listItem={addItemToList}/>
+      <h1 className={style.todoHeading}>Todo Items</h1>
+      <hr/>
+      {
+        todoList.map((item, i)=>{
+          return <ListItems key={i} index={i} itemName={item} deleteTodo={deleteTodo}/>
+        })
+      }
     </>
   )
 }

@@ -1,0 +1,27 @@
+ul {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+li{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    align-items: center;
+}
+
+i:hover{
+    background-color: red;
+}
+
+ul:hover {
+    z-index: 10;
+    box-shadow: 0px 10px 20px rgba(35, 16, 16, 0.3);
+    transform: translateX(4px);
+}
+
+
+

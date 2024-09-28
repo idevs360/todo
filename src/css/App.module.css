@@ -1,0 +1,18 @@
+body, html{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.todoHeading{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+
